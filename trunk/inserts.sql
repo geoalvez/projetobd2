@@ -1,3 +1,5 @@
+ALTER SESSION SET NLS_DATE_FORMAT = 'DD/MM/YYYY' 
+
 INSERT INTO FILMES_TB VALUES
 (
     1,
@@ -88,7 +90,7 @@ INSERT INTO FILMES_TB VALUES
         )
     )         
 );
-
+\
 INSERT INTO FILMES_TB VALUES
 (
     2,
@@ -144,7 +146,7 @@ INSERT INTO FILMES_TB VALUES
         )
     )         
 );
-
+\
 INSERT INTO FILMES_TB VALUES
 (
     3,
@@ -198,7 +200,7 @@ INSERT INTO FILMES_TB VALUES
         )
     )         
 );
-
+\
 INSERT INTO FILMES_TB VALUES
 (
     4,
@@ -289,7 +291,7 @@ INSERT INTO FILMES_TB VALUES
         )
     )         
 );
-
+\
 INSERT INTO FILMES_TB VALUES
 (
     5,
@@ -360,7 +362,7 @@ INSERT INTO FILMES_TB VALUES
         )
     )         
 );
-
+\
 INSERT INTO FILMES_TB VALUES
 (
     6,
@@ -431,3 +433,37 @@ INSERT INTO FILMES_TB VALUES
         )
     )         
 );
+
+
+--Não funciona ainda
+insert into CLIENTES_TB values(
+		1,
+		cliente_ty('Arinaldo', endereco_ty('Buraco da gia', 56, 'Campina Grande','PB'), emails_ty('ari@gmail.com','arinaldo@bol.com.br'),
+		           'M', 'Programador', 3 , telefones_ty('83-3333-3333','83-8888-8888')
+		
+		
+		),
+		DEPENDENTES_NT(
+		    dependente_ty('Arinaldo Junior', endereco_ty('Buraco da gia', 56, 'Campina Grande','PB'), emails_ty('arif@gmail.com','arinaldof@bol.com.br'),
+		           'M', 'Estudante', 3 , telefones_ty('83-3333-3333','83-8888-8888')
+		
+		),
+		EMPRESTIMOS_NT(
+		    emprestimo_ty('20/01/2009','30/01/2009', 2.00, 2.00, select ref(e.filme) from filmes_tb e where e.codigo=1)
+		
+		),
+		RESERVAS_NT(
+		    reserva_ty('20/01/2009' , '23/01/2009')
+		
+		),
+		OPINIOES_NT(
+		    opiniao_ty('nao gostei desse filme','20/02/2009',select ref(e.filme) from filmes_tb e where e.codigo=1)
+		
+		)
+);
+
+
+
+
+
+
