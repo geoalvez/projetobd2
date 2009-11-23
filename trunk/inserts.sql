@@ -1,5 +1,215 @@
 ALTER SESSION SET NLS_DATE_FORMAT = 'DD/MM/YYYY' 
 
+-- inserts novos
+
+                                             
+INSERT INTO FILMES_TB VALUES(
+'George o Rei da Floresta',
+2009,
+'Comedia',
+15,
+'Confusoes tamanho familia',
+120
+);
+
+
+
+
+
+insert into FILMES_TB_INFORM values(
+  1,
+ (select ref(f)from FILMES_TB f where f.TITULO = 'George o Rei da Floresta'),
+  PROFISSIONAIS_NT
+  (
+     DIRETOR_TY
+     (   
+         'James Cameron',
+         ENDERECO_TY
+         (
+             'Av Buraco da Gia',
+             60,
+             'Buraco da Gia',
+             'Campina Grande',
+             'PB'
+          ),
+          EMAILS_TY
+          (
+             'jc@gmail.com'
+          ),
+          ESPECIALIDADES_NT
+          (
+             'DRAMA'
+           )    
+      ),
+      DIRETOR_TY
+         (   
+            'John Landau',
+            ENDERECO_TY
+            (
+                'Av Buraco da Gia',
+                90,
+                'Buraco da Gia',
+                'Campina Grande',
+                'PB'
+            ),
+            EMAILS_TY
+            (
+                'jlandau@gmail.com'
+            ),
+            ESPECIALIDADES_NT
+            (
+                'DRAMA'
+            )    
+         ),
+        ATOR_TY
+        (   
+            'George Alves',   
+            ENDERECO_TY
+            (
+                'Rua da Floresta',
+                24,
+                'Bodocongo',
+                'Campina Grande',
+                'PB'
+            ),
+            EMAILS_TY
+            (
+                'geo@gmail.com'
+            ),
+            24
+        ),
+        ATOR_TY
+        (   
+            'Gloria Stuart ',   
+            ENDERECO_TY
+            (
+                'Rua da Rosquinha',
+                13,
+                'Bodocongo',
+                'Campina Grande',
+                'PB'
+            ),
+            EMAILS_TY
+            (
+                'leonardo@gmail.com'
+            ),
+            11
+        )
+    )
+   
+);
+
+
+
+
+INSERT INTO FILMES_TB VALUES(
+'Lula O Filme',
+2009,
+'Drama',
+15,
+'Historia do presidente',
+120
+);
+
+insert into FILMES_TB_INFORM values(
+  2,
+ (select ref(f)from FILMES_TB f where f.TITULO = 'Lula O Filme'),
+  PROFISSIONAIS_NT
+  (
+     DIRETOR_TY
+     (   
+         'James Cameron',
+         ENDERECO_TY
+         (
+             'Av Buraco da Gia',
+             60,
+             'Buraco da Gia',
+             'Campina Grande',
+             'PB'
+          ),
+          EMAILS_TY
+          (
+             'jc@gmail.com'
+          ),
+          ESPECIALIDADES_NT
+          (
+             'DRAMA'
+           )    
+      ),
+      DIRETOR_TY
+         (   
+            'John Landau',
+            ENDERECO_TY
+            (
+                'Av Buraco da Gia',
+                90,
+                'Buraco da Gia',
+                'Campina Grande',
+                'PB'
+            ),
+            EMAILS_TY
+            (
+                'jlandau@gmail.com'
+            ),
+            ESPECIALIDADES_NT
+            (
+                'DRAMA'
+            )    
+         ),
+        ATOR_TY
+        (   
+            'Luiz Inacio Lula da Silva',   
+            ENDERECO_TY
+            (
+                'Rua Brasilia',
+                24,
+                'Bodocongo',
+                'Brasilia',
+                'DF'
+            ),
+            EMAILS_TY
+            (
+                'lula@gmail.com'
+            ),
+            24
+        ),
+        ATOR_TY
+        (   
+            'Gloria Stuart ',   
+            ENDERECO_TY
+            (
+                'Rua da Rosquinha',
+                13,
+                'Bodocongo',
+                'Campina Grande',
+                'PB'
+            ),
+            EMAILS_TY
+            (
+                'leonardo@gmail.com'
+            ),
+            11
+        )
+    )
+   
+);
+
+
+
+INSERT INTO FILMES_TB VALUES(
+'Cavalo de Troia',
+2009,
+'Aventura',
+15,
+'Cavalo de Troia',
+150
+);
+
+
+
+
+--inserts antigos
+
 INSERT INTO FILMES_TB VALUES
 (
     1,
