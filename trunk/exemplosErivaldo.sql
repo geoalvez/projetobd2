@@ -1,4 +1,4 @@
---select da questao 3
+--select da questao 3 
 
 select f.titulo
 from Filme_tb f
