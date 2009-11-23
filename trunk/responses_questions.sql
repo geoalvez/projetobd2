@@ -1,0 +1,76 @@
+--12 Consulta:
+
+SELECT F.FILME.TITULO AS FILME, VALUE(P).NOME AS DIRETOR
+FROM FILMES_TB F, TABLE(F.PROFISSIONAIS) P
+WHERE F.FILME.NUM_OSCARS > 2 AND VALUE(P) IS OF (ONLY DIRETOR_TY)
+ORDER BY F.FILME.TITULO;
+
+--RESULTADO:
+--FILME 	DIRETOR
+--2012 	John Smith
+--Titanic 	James Cameron
+--Titanic 	John Landau 
+
+--7)
+
+ALTER TYPE FILME_TY
+    DROP MEMBER FUNCTION minutosParaHoras RETURN NUMBER CASCADE;
+
+
+ALTER TYPE FILME_TY
+    ADD MEMBER FUNCTION minutosParaHoras RETURN NUMBER CASCADE;
+
+
+CREATE OR REPLACE TYPE BODY FILME_TY IS
+    MEMBER FUNCTION  minutosParaHoras  RETURN NUMBER IS
+    BEGIN
+        return self.duracao/60;
+    END;
+END;
+
+--20)
+
+--Consulta:
+
+select t.filme.titulo from FILMES_TB t
+  where t.filme.minutosParaHoras() > 2   
+
+
+--Resultado:
+
+--FILME.TITULO
+--2012
+--Titanic
+
+
+--14)
+
+--Consulta:
+
+SELECT VALUE(P).NOME AS ATOR
+FROM FILMES_TB F, TABLE(F.PROFISSIONAIS) P
+WHERE F.FILME.CATEGORIA='Terror' AND VALUE(P) IS OF (ONLY ATOR_TY)
+ORDER BY P.NOME;
+
+--Resultado:
+
+--ATOR
+--Heverton Stuart
+--Jorge Ter
+
+
+--19)
+
+--Consulta:
+
+SELECT F.FILME.TITULO, F.FILME.NUM_OSCARS AS OSCARS_FILME, TREAT(VALUE(P) AS ATOR_TY).NUM_OSCARS AS OSCARS_ATOR
+FROM FILMES_TB F, TABLE(F.PROFISSIONAIS) P
+WHERE P.NOME='John Wayne' AND VALUE(P) IS OF (ONLY ATOR_TY)
+
+--Resultado:
+
+--FILME.TITULO	OSCARS_FILME	OSCARS_ATOR
+--Troia	1	1
+--O mascara	11	2
+--O mascara 2	11	5
+
