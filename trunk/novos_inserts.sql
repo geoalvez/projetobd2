@@ -395,7 +395,6 @@ ATOR_TY
 --filmes
 
 delete from filmes_tb;
-delete from filmes_tb_inform;
 
 insert into filmes_tb values(
 FILME_TY
@@ -408,6 +407,79 @@ FILME_TY
         194
     ) 
 );
+
+insert into filmes_tb values(
+FILME_TY
+    (  2,
+        '2012',
+        2009,
+        'Fim dos tempos',
+        4,
+        'aqui é a descrição',
+        160
+    )
+);
+
+insert into filmes_tb values(	
+ FILME_TY
+    (   3,
+        'Troia',
+        2004,
+        'Acao',
+        1,
+        'Cavalo de Troia',
+        90
+    )
+);
+
+insert into filmes_tb values(
+	FILME_TY
+    (   4,
+        'Jogos mortais',
+        1997,
+        'Terror',
+        11,
+        'Era uma vez uma noite de terror',
+        194
+    )
+);
+
+insert into filmes_tb values(
+FILME_TY
+    ( 5,
+        'O mascara',
+        1997,
+        'Comedia',
+        11,
+        'Era uma vez o mascara',
+        194
+    )
+);
+	
+insert into filmes_tb values(
+FILME_TY
+    ( 6,
+        'O mascara 2',
+        1997,
+        'Comedia',
+        11,
+        'Era uma vez o mascara 2',
+        194
+    )
+);
+
+delete from filmes_tb_inform;
+
+insert into filmes_tb_inform values(
+  select ref(e) from filmes_tb e where codigo=1,
+  PROFISSIONAIS_NT
+    (select ref (e) from profissionais_tb e where codigo=1,
+	 select ref (e) from profissionais_tb e where codigo=2,
+	 select ref (e) from profissionais_tb e where codigo=3,
+	)
+);
+	
+
 
 
 
