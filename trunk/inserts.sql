@@ -221,7 +221,7 @@ INSERT INTO FILMES_TB VALUES
         11,
         'Era uma vez um navio que desafiou os mares',
         194
-    ),
+    ) ,
     PROFISSIONAIS_NT
     (
         DIRETOR_TY

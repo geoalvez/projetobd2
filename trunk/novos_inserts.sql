@@ -390,4 +390,24 @@ ATOR_TY
             11
         )
 );
-		
+
+
+--filmes
+
+delete from filmes_tb;
+delete from filmes_tb_inform;
+
+insert into filmes_tb values(
+FILME_TY
+    (   1,
+        'Titanic',
+        1997,
+        'Drama',
+        11,
+        'Era uma vez um navio que desafiou os mares',
+        194
+    ) 
+);
+
+
+
