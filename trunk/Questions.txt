@@ -1,0 +1,20 @@
+1.Crie o esquema OR usando Oracle
+2.Crie uma Stored Procedure, usando PL-SQL, que recebe o CPF de um cliente e uma data, e imprime o histórico de empréstimos realizados a partir da data passada.
+3.Crie uma stored procedure que imprime na tela os filmes que foram mais alugadas num dado mês, que é passado como parâmetro.
+4.Crie uma stored procedure que mostra uma lista com CPF, nome, emails e total débitos, dos clientes que estão devendo.
+5.Crie um construtor para cliente que recebe o CPF  e nome, deixando o resto com NULL.
+6.Crie um TRIGGER, que mostra na tela, um aviso de advertência com os dados do empréstimo em atraso, toda vez que um cliente estiver tentando locar um vídeo, mas esteja em débito, com multas a serem pagas.
+7.Crie um método  de instância usando SQL que mostra a duração do filme em horas.
+8.Crie um método de instância  SQL no tipo Cliente que realiza o  aluguel de um filme
+9.Crie um método estático SQL para o tipo Cliente, que exibe o total devido com multas de todos os clientes.
+10.Crie um método de instância Java no tipo cliente que permite reservar um filme.
+11.Crie um método de instância no tipo fornecedor que mostra os categorias que ele fornece em Inglês (ou seja ele traduz as categorias que estão armazenadas em português para inglês).
+=> 12.Listar os filmes que receberam mais de 2 Oscars juntamente com seus diretores;
+13.Listar os filmes e a quantidade de vezes que foram alugados em ordem decrescente;
+14.Quais os nomes dos atores que trabalharam em filmes de terror?
+15.Qual a categoria de filme mais alugada pelos clientes do sexo masculino?
+16.Para cada categoria, obter a quantidade de filmes que nunca foram reservados nos últimos 2 anos.
+17.Liste os nomes, telefones e e-mails dos usuários que alugaram o filme “Troia”?
+18.Listar todos os clientes em ordem alfabética e os seus dependentes do sexo masculino;
+19.Para o ator “John Wayne”, listar a quantidade de Oscars, os filmes que trabalhou, a quantidade de Oscars de cada  filme e a categoria do filme.
+20.Liste os títulos dos filmes que têm duração em horas superior a 2h.
