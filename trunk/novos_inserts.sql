@@ -471,51 +471,56 @@ FILME_TY
 delete from filmes_tb_inform;
 
 insert into filmes_tb_inform values(
-  select ref(e) from filmes_tb e where codigo=1,
+  (select ref(e) from filmes_tb e where e.codigo=1),
   PROFISSIONAIS_NT
-    (select ref (e) from profissionais_tb e where codigo=1,
-	 select ref (e) from profissionais_tb e where codigo=2,
-	 select ref (e) from profissionais_tb e where codigo=3,
-	 select ref (e) from profissionais_tb e where codigo=4
+    ((select ref (e) from profissionais_tb e where e.codigo=1),
+	 (select ref (e) from profissionais_tb e where e.codigo=2),
+	 (select ref (e) from profissionais_tb e where e.codigo=3),
+	 (select ref (e) from profissionais_tb e where e.codigo=4)
 	)
 );
+
 insert into filmes_tb_inform values(
-  select ref(e) from filmes_tb e where codigo=2,
+  (select ref(e) from filmes_tb e where e.codigo=2),
   PROFISSIONAIS_NT
-    (select ref (e) from profissionais_tb e where codigo=5,
-	 select ref (e) from profissionais_tb e where codigo=6
+    ((select ref (e) from profissionais_tb e where e.codigo=5),
+	 (select ref (e) from profissionais_tb e where e.codigo=6)
 	)
 );
+
 insert into filmes_tb_inform values(
-  select ref(e) from filmes_tb e where codigo=3,
+  (select ref(e) from filmes_tb e where e.codigo=3),
   PROFISSIONAIS_NT
-    (select ref (e) from profissionais_tb e where codigo=7,
-	 select ref (e) from profissionais_tb e where codigo=8
+    ((select ref (e) from profissionais_tb e where e.codigo=7),
+	 (select ref (e) from profissionais_tb e where e.codigo=8)
 	)
 );
+
 insert into filmes_tb_inform values(
-  select ref(e) from filmes_tb e where codigo=4,
+  (select ref(e) from filmes_tb e where e.codigo=4),
   PROFISSIONAIS_NT
-    (select ref (e) from profissionais_tb e where codigo=9,
-	 select ref (e) from profissionais_tb e where codigo=10,
-	 select ref (e) from profissionais_tb e where codigo=11,
-	 select ref (e) from profissionais_tb e where codigo=12
+    ((select ref (e) from profissionais_tb e where e.codigo=9),
+	 (select ref (e) from profissionais_tb e where e.codigo=10),
+	 (select ref (e) from profissionais_tb e where e.codigo=11),
+	 (select ref (e) from profissionais_tb e where e.codigo=12)
 	)
 );
+
 insert into filmes_tb_inform values(
-  select ref(e) from filmes_tb e where codigo=5,
+  (select ref(e) from filmes_tb e where e.codigo=5),
   PROFISSIONAIS_NT
-    (select ref (e) from profissionais_tb e where codigo=13,
-	 select ref (e) from profissionais_tb e where codigo=14,
-	 select ref (e) from profissionais_tb e where codigo=15
+    ((select ref (e) from profissionais_tb e where e.codigo=13),
+	 (select ref (e) from profissionais_tb e where e.codigo=14),
+	 (select ref (e) from profissionais_tb e where e.codigo=15)
 	)
 );
+
 insert into filmes_tb_inform values(
-  select ref(e) from filmes_tb e where codigo=6,
+  (select ref(e) from filmes_tb e where e.codigo=6),
   PROFISSIONAIS_NT
-    (select ref (e) from profissionais_tb e where codigo=16,
-	 select ref (e) from profissionais_tb e where codigo=17,
-	 select ref (e) from profissionais_tb e where codigo=18
+    ((select ref (e) from profissionais_tb e where e.codigo=16),
+	 (select ref (e) from profissionais_tb e where e.codigo=17),
+	 (select ref (e) from profissionais_tb e where e.codigo=18)
 	)
 );
 
