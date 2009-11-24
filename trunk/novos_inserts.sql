@@ -483,7 +483,7 @@ insert into filmes_tb_inform values(
 insert into filmes_tb_inform values(
   (select ref(e) from filmes_tb e where e.codigo=2),
   PROFISSIONAIS_NT
-    ((select ref (e) from profissionais_tb e where e.codigo=5),
+    ((select ref (e) from profissionais_tb e where e.codigo=5), 
 	 (select ref (e) from profissionais_tb e where e.codigo=6)
 	)
 );
