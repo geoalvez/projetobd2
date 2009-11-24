@@ -628,7 +628,13 @@ insert into CLIENTES_TB_INFORM values (
 );
 
 	
+select deref(c.cliente).nome
+from CLIENTE_TB_INFOR c
+where deref(c.cliente).sexo='M'
 
 
+select deref(c.cliente).nome
+from CLIENTES_TB_INFORM c
+where deref(c.cliente).sexo='M'
 
 
