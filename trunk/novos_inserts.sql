@@ -1,3 +1,5 @@
+ALTER SESSION SET NLS_DATE_FORMAT = 'DD/MM/YYYY' ;
+
 --profissionais
 
 delete from PROFISSIONAIS_TB;
@@ -573,6 +575,31 @@ insert into clientes_tb values(
 		'M',
 		'Forrozeiro',
 		4.00,
+		TELEFONES_TY('(83)3333-3333', '(83)8888-8888')
+	 )
+);
+
+insert into clientes_tb values(
+     cliente_ty
+	 (
+	     3,
+		 'Marinez',
+		 99999999999,
+		 ENDERECO_TY
+            (
+                'Rua do Forró3',
+                13,
+                'Capoeiras3',
+                'Cajazeiras',
+                'PB'
+            ),
+         EMAILS_TY
+            (
+                'm@gmail.com'
+            ),
+		'F',
+		'Forrozeiro',
+		2.00,
 		TELEFONES_TY('(83)3333-3333', '(83)8888-8888')
 	 )
 );
