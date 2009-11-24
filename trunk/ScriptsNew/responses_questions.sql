@@ -1,8 +1,8 @@
 --12 Consulta:
 
-SELECT deref(F.FILME).TITULO AS FILME, deref(VALUE(P)).NOME AS DIRETOR
-FROM FILMES_TB_INFORM F, TABLE(F.PROFISSIONAIS) P
-WHERE deref(F.FILME).NUM_OSCARS > 2 AND deref(VALUE(P)) IS OF (ONLY DIRETOR_TY)
+SELECT F.FILME.TITULO AS FILME, VALUE(P).NOME AS DIRETOR
+FROM FILMES_INFO_TB F, TABLE(F.PROFISSIONAIS) P
+WHERE F.FILME.NUM_OSCARS > 2 AND VALUE(P) IS OF (ONLY DIRETOR_TY)
 ORDER BY F.FILME.TITULO;
 
 --RESULTADO:
@@ -54,9 +54,9 @@ select f.titulo from FILMES_TB f
 
 --Consulta:
 
-SELECT deref(VALUE(P)).NOME AS ATOR
-FROM FILMES_TB_INFORM F, TABLE(F.PROFISSIONAIS) P
-WHERE deref(F.FILME).CATEGORIA='Terror' AND deref(VALUE(P)) IS OF (ONLY ATOR_TY)
+SELECT VALUE(P).NOME AS ATOR
+FROM FILMES_INFO_TB F, TABLE(F.PROFISSIONAIS) P
+WHERE F.FILME.CATEGORIA='Terror' AND VALUE(P) IS OF (ONLY ATOR_TY)
 ORDER BY ATOR;
 
 --Resultado:
@@ -70,10 +70,9 @@ ORDER BY ATOR;
 
 --Consulta:
 
-SELECT deref(F.FILME).TITULO, deref(F.FILME).NUM_OSCARS AS OSCARS_FILME, TREAT(deref(VALUE(P)) AS ATOR_TY).NUM_OSCARS AS OSCARS_ATOR
-FROM FILMES_TB_INFORM F, TABLE(F.PROFISSIONAIS) P
-WHERE deref(VALUE(P)).NOME='John Wayne' AND deref(VALUE(P)) IS OF (ONLY ATOR_TY)
-
+SELECT F.FILME.TITULO, F.FILME.NUM_OSCARS AS OSCARS_FILME, TREAT(VALUE(P) AS ATOR_TY).NUM_OSCARS AS OSCARS_ATOR
+FROM FILMES_INFO_TB F, TABLE(F.PROFISSIONAIS) P
+WHERE VALUE(P).NOME='John Wayne' AND VALUE(P) IS OF (ONLY ATOR_TY)
 --Resultado:
 
 --FILME.TITULO	OSCARS_FILME	OSCARS_ATOR
@@ -113,12 +112,24 @@ BEGIN
 CRIACLIENTE(11111111111, 'cliente st');
 END;
 
+--Para verificar se adicionou
+
+select * from clientes_tb
 
 --17
 
 select c.nome, t.* , e.*
 from clientes_tb c, table(c.emails) e, table(c.telefones) t
 
+--Resultado
+
+--NOME 					 COLUMN_VALUE		COLUMN_VALUE
+--Jackson do Pandeiro	(83)3333-3333	  jpandeiro@gmail.com
+--Jackson do Pandeiro	(83)8888-8888	  jpandeiro@gmail.com
+--Luiz Gonzaga			(83)3333-3333	  lg@gmail.com
+--Luiz Gonzaga			(83)8888-8888	  lg@gmail.com
+--Marinez				(83)3333-3333	  m@gmail.com
+--Marinez				(83)8888-8888	  m@gmail.com
 
 --15) pendente affff
 SELECT deref(U).codigo
@@ -126,7 +137,7 @@ FROM the (SELECT c.emprestimos FROM CLIENTES_TB_INFORM c where deref(c.cliente).
 
 
 select deref(c.emprestimos)
-from CLIENTES_TB_INFORM c
+from CLIENTES_INFO_TB c
 where deref(c.cliente).sexo='M'
 
 select e.codigo, deref(e.filme).titulo from emprestimos_tb e;
