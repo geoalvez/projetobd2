@@ -81,3 +81,21 @@ WHERE deref(VALUE(P)).NOME='John Wayne' AND deref(VALUE(P)) IS OF (ONLY ATOR_TY)
 --O mascara	 11	2
 --O mascara 2	11	5
 
+--15) pendente affff
+SELECT deref(U).codigo
+FROM the (SELECT c.emprestimos FROM CLIENTES_TB_INFORM c where deref(c.cliente).sexo='M') U
+
+
+select deref(c.emprestimos)
+from CLIENTES_TB_INFORM c
+where deref(c.cliente).sexo='M'
+
+select e.codigo, deref(e.filme).titulo from emprestimos_tb e;
+
+
+SELECT deref(E).MULTA_PAGA
+FROM CLIENTES_TB_INFORM C, TABLE(C.EMPRESTIMOS) E
+WHERE deref(C.CLIENTE).CODIGO=2
+
+--17
+
