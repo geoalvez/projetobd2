@@ -525,6 +525,108 @@ insert into filmes_tb_inform values(
 );
 
 
+delete from clientes_tb;
+
+insert into clientes_tb values(
+     cliente_ty
+	 (
+	     1,
+		 'Jackson do Pandeiro',
+		 99999999999,
+		 ENDERECO_TY
+            (
+                'Rua do Forró',
+                13,
+                'Capoeiras',
+                'Cajazeiras',
+                'PB'
+            ),
+         EMAILS_TY
+            (
+                'jpandeiro@gmail.com'
+            ),
+		'M',
+		'Forrozeiro',
+		4.00,
+		TELEFONES_TY('(83)3333-3333', '(83)8888-8888')
+	 )
+);
+
+insert into clientes_tb values(
+     cliente_ty
+	 (
+	     2,
+		 'Luiz Gonzaga',
+		 99999999999,
+		 ENDERECO_TY
+            (
+                'Rua do Forró 2',
+                13,
+                'Capoeiras 2',
+                'Cajazeiras',
+                'PB'
+            ),
+         EMAILS_TY
+            (
+                'lg@gmail.com'
+            ),
+		'M',
+		'Forrozeiro',
+		4.00,
+		TELEFONES_TY('(83)3333-3333', '(83)8888-8888')
+	 )
+);
+
+
+
+delete from EMPRESTIMOS_TB;
+
+insert into EMPRESTIMOS_TB values(
+       1,
+	   '10/01/2009',
+	   '12/01/2009',
+	   0,
+	   0,
+	   (select ref(e) from filmes_tb e where e.codigo=4)
+);
+
+insert into EMPRESTIMOS_TB values(
+       2,
+	   '12/02/2009',
+	   '14/02/2009',
+	   0,
+	   0,
+	   (select ref(e) from filmes_tb e where e.codigo=5)
+);
+
+insert into EMPRESTIMOS_TB values(
+       3,
+	   '16/01/2009',
+	   '18/01/2009',
+	   0,
+	   0,
+	   (select ref(e) from filmes_tb e where e.codigo=6)
+);
+
+delete from CLIENTES_TB_INFORM;
+
+insert into CLIENTES_TB_INFORM values (
+	(select ref(e) from clientes_tb e where e.codigo=1),
+	DEPENDENTES_NT(),
+	EMPRESTIMOS_NT((select ref(e) from emprestimos_tb e where e.codigo=4)),
+	RESERVAS_NT(),
+    OPINIOES_NT()
+);
+
+insert into CLIENTES_TB_INFORM values (
+	(select ref(e) from clientes_tb e where e.codigo=2),
+	DEPENDENTES_NT(),
+	EMPRESTIMOS_NT((select ref(e) from emprestimos_tb e where e.codigo=5),
+	               (select ref(e) from emprestimos_tb e where e.codigo=6)),
+	RESERVAS_NT(),
+    OPINIOES_NT()
+);
+
 	
 
 
