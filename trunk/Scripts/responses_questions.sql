@@ -81,6 +81,45 @@ WHERE deref(VALUE(P)).NOME='John Wayne' AND deref(VALUE(P)) IS OF (ONLY ATOR_TY)
 --O mascara	 11	2
 --O mascara 2	11	5
 
+--5)
+
+CREATE OR REPLACE PROCEDURE CRIACLIENTE
+(
+    CPF_IN     IN CLIENTES_TB.CPF%TYPE,
+    NOME_IN    IN CLIENTES_TB.NOME%TYPE
+)
+AS
+BEGIN
+    INSERT INTO CLIENTES_TB VALUES
+    (
+        CLIENTE_TY
+            (
+                (SELECT COUNT(*) FROM CLIENTES_TB) + 1, --GERA UM CODIGO PARA O CLIENTE
+                NOME_IN,
+                CPF_IN,
+                NULL,
+                NULL,
+                NULL,
+                NULL,
+                NULL,
+                NULL
+         )
+);
+END;
+
+--para rodar
+
+BEGIN
+CRIACLIENTE(11111111111, 'cliente st');
+END;
+
+
+--17
+
+select c.nome, t.* , e.*
+from clientes_tb c, table(c.emails) e, table(c.telefones) t
+
+
 --15) pendente affff
 SELECT deref(U).codigo
 FROM the (SELECT c.emprestimos FROM CLIENTES_TB_INFORM c where deref(c.cliente).sexo='M') U
