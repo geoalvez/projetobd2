@@ -1,28 +1,32 @@
 --12 Consulta:
 
-SELECT F.FILME.TITULO AS FILME, VALUE(P).NOME AS DIRETOR
-FROM FILMES_TB F, TABLE(F.PROFISSIONAIS) P
-WHERE F.FILME.NUM_OSCARS > 2 AND VALUE(P) IS OF (ONLY DIRETOR_TY)
+SELECT deref(F.FILME).TITULO AS FILME, deref(VALUE(P)).NOME AS DIRETOR
+FROM FILMES_TB_INFORM F, TABLE(F.PROFISSIONAIS) P
+WHERE deref(F.FILME).NUM_OSCARS > 2 AND deref(VALUE(P)) IS OF (ONLY DIRETOR_TY)
 ORDER BY F.FILME.TITULO;
 
 --RESULTADO:
---FILME 	DIRETOR
---2012 	John Smith
---Titanic 	James Cameron
---Titanic 	John Landau 
+--FILME	DIRETOR
+--Jogos mortais	Arinaldo da Silva
+--Jogos mortais	George Marcelo
+--O mascara	Claudio Batista
+--O mascara 2	Claudio Batista
+--Titanic	James Cameron
+--Titanic	John Landau
+--2012	John Smith
 
 --7)
 
 ALTER TYPE FILME_TY
-    DROP MEMBER FUNCTION minutosParaHoras RETURN NUMBER CASCADE;
+    DROP MEMBER FUNCTION duracaoEmHoras RETURN NUMBER CASCADE;
 
 
 ALTER TYPE FILME_TY
-    ADD MEMBER FUNCTION minutosParaHoras RETURN NUMBER CASCADE;
+    ADD MEMBER FUNCTION duracaoEmHoras RETURN NUMBER CASCADE;
 
 
 CREATE OR REPLACE TYPE BODY FILME_TY IS
-    MEMBER FUNCTION  minutosParaHoras  RETURN NUMBER IS
+    MEMBER FUNCTION  duracaoEmHoras  RETURN NUMBER IS
     BEGIN
         return self.duracao/60;
     END;
@@ -32,25 +36,28 @@ END;
 
 --Consulta:
 
-select t.filme.titulo from FILMES_TB t
-  where t.filme.minutosParaHoras() > 2   
+select f.titulo from FILMES_TB f
+  where f.duracaoEmHoras() > 2  
 
 
 --Resultado:
 
---FILME.TITULO
---2012
+--TITULO
 --Titanic
+--2012
+--Jogos mortais
+--O mascara
+--O mascara 2
 
 
 --14)
 
 --Consulta:
 
-SELECT VALUE(P).NOME AS ATOR
-FROM FILMES_TB F, TABLE(F.PROFISSIONAIS) P
-WHERE F.FILME.CATEGORIA='Terror' AND VALUE(P) IS OF (ONLY ATOR_TY)
-ORDER BY P.NOME;
+SELECT deref(VALUE(P)).NOME AS ATOR
+FROM FILMES_TB_INFORM F, TABLE(F.PROFISSIONAIS) P
+WHERE deref(F.FILME).CATEGORIA='Terror' AND deref(VALUE(P)) IS OF (ONLY ATOR_TY)
+ORDER BY ATOR;
 
 --Resultado:
 
@@ -63,14 +70,14 @@ ORDER BY P.NOME;
 
 --Consulta:
 
-SELECT F.FILME.TITULO, F.FILME.NUM_OSCARS AS OSCARS_FILME, TREAT(VALUE(P) AS ATOR_TY).NUM_OSCARS AS OSCARS_ATOR
-FROM FILMES_TB F, TABLE(F.PROFISSIONAIS) P
-WHERE P.NOME='John Wayne' AND VALUE(P) IS OF (ONLY ATOR_TY)
+SELECT deref(F.FILME).TITULO, deref(F.FILME).NUM_OSCARS AS OSCARS_FILME, TREAT(deref(VALUE(P)) AS ATOR_TY).NUM_OSCARS AS OSCARS_ATOR
+FROM FILMES_TB_INFORM F, TABLE(F.PROFISSIONAIS) P
+WHERE deref(VALUE(P)).NOME='John Wayne' AND deref(VALUE(P)) IS OF (ONLY ATOR_TY)
 
 --Resultado:
 
 --FILME.TITULO	OSCARS_FILME	OSCARS_ATOR
---Troia	1	1
---O mascara	11	2
+--Troia	     1	1
+--O mascara	 11	2
 --O mascara 2	11	5
 
