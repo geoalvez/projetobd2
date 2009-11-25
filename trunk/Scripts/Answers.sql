@@ -83,25 +83,26 @@ ORDER BY NOME_ATOR;
 --Jorge Ter
 --##
 
---15				PENDENTE!!!!!!!!!!!!!!!!!!!
-select t.categoria from
-(select y.filme.categoria as categoria, count(*) as ocorrencias
-from CLIENTES_INFO_TB c, TABLE(c.emprestimos) y
-where c.cliente.sexo='M'
-group by y.filme.categoria) t where t.ocorrencias = (
-
- select max(a.ocorrencias) from (
-
-
-select y.filme.categoria as categoria, count(*) as ocorrencias
-from CLIENTES_INFO_TB c, TABLE(c.emprestimos) y
-where c.cliente.sexo='M'
-group by y.filme.categoria
-
-
-)a
-
- )
+--15	OK
+SELECT C.CATEGORIA
+FROM
+(
+	SELECT E.FILME.CATEGORIA AS CATEGORIA, COUNT(*) AS OCORRENCIAS
+	FROM CLIENTES_INFO_TB C, TABLE(C.EMPRESTIMOS) E
+	WHERE C.CLIENTE.SEXO = 'M'
+	GROUP BY E.FILME.CATEGORIA
+) C
+WHERE C.OCORRENCIAS =
+(
+	SELECT MAX(O.OCORRENCIAS)
+	FROM
+	(
+		SELECT E.FILME.CATEGORIA AS CATEGORIA, COUNT(*) AS OCORRENCIAS
+		FROM CLIENTES_INFO_TB C, TABLE(C.EMPRESTIMOS) E
+		WHERE C.CLIENTE.SEXO = 'M'
+		GROUP BY E.FILME.CATEGORIA
+	) O
+)
 
 --CATEGORIA
 --Comedia
@@ -128,7 +129,7 @@ GROUP BY F.CATEGORIA
 --Comedia	2
 --##
 
---17	TESTAR MELHOR (INSERIR CLIENTE COM MAIS DE UM TELEFONE E/OU MAIS DE UM EMAIL)
+--17	OK
 SELECT C.CLIENTE.NOME AS NOME_CLIENTE, T.COLUMN_VALUE AS TELEFONES, E.COLUMN_VALUE AS EMAILS
 FROM CLIENTES_INFO_TB C, TABLE(C.CLIENTE.EMAILS) E, TABLE(C.CLIENTE.TELEFONES) T, TABLE(C.EMPRESTIMOS) EMP
 WHERE EMP.FILME.TITULO = 'Troia'
