@@ -26,6 +26,17 @@ BEGIN
 	END LOOP;
 	CLOSE C;
 END;
+
+--para rodar
+
+BEGIN
+
+LISTARTOP5 
+(
+	01
+) ;
+END;
+
 --##
 
 --04	OK
