@@ -624,7 +624,25 @@ insert into CLIENTES_INFO_TB values (
             ),
 		'M',
 		TELEFONES_TY('05508333333333', '05508388888888')
+	  ),
+	  dependente_ty(
+	     'Jeysibel da silva',
+		 ENDERECO_TY
+            (
+                'Rua do Forró3',
+                13,
+                'Capoeiras3',
+                'Cajazeiras',
+                'PB'
+            ),
+         EMAILS_TY
+            (
+                'jeysibel@gmail.com'
+            ),
+		'M',
+		TELEFONES_TY('05508333333333', '05508388888888')
 	  )
+	  
 	),
 	EMPRESTIMOS_NT(
 	  emprestimo_ty(
