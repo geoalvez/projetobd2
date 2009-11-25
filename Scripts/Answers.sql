@@ -141,6 +141,19 @@ ORDER BY NOME_CLIENTE
 --##
 
 --18
+
+select c.cliente.nome as nomeCliente, y.nome as nomeDependente
+from CLIENTES_INFO_TB c, TABLE(c.dependentes) y
+where y.sexo='M'
+order by nomeCliente
+
+--Resultado
+--NOMECLIENTE	NOMEDEPENDENTE
+--Jackson do Pandeiro	Fernando Fagundes
+--Jackson do Pandeiro	Jeysibel da silva
+--Luiz Gonzaga	Romeryto Lira
+--Marinez	Geo Alvez
+
 --##
 
 --19	OK
