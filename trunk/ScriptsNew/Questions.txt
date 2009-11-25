@@ -10,11 +10,14 @@
 10.Crie um método de instância Java no tipo cliente que permite reservar um filme.
 11.Crie um método de instância no tipo fornecedor que mostra os categorias que ele fornece em Inglês (ou seja ele traduz as categorias que estão armazenadas em português para inglês).
 => 12.Listar os filmes que receberam mais de 2 Oscars juntamente com seus diretores;
-13.Listar os filmes e a quantidade de vezes que foram alugados em ordem decrescente;
+=> 13.Listar os filmes e a quantidade de vezes que foram alugados em ordem decrescente;
 =>14.Quais os nomes dos atores que trabalharam em filmes de terror?
-15.Qual a categoria de filme mais alugada pelos clientes do sexo masculino?
+=>* 15.Qual a categoria de filme mais alugada pelos clientes do sexo masculino?
 16.Para cada categoria, obter a quantidade de filmes que nunca foram reservados nos últimos 2 anos.
 =>17.Liste os nomes, telefones e e-mails dos usuários que alugaram o filme “Troia”?
 18.Listar todos os clientes em ordem alfabética e os seus dependentes do sexo masculino;
 =>19.Para o ator “John Wayne”, listar a quantidade de Oscars, os filmes que trabalhou, a quantidade de Oscars de cada  filme e a categoria do filme.
 =>20.Liste os títulos dos filmes que têm duração em horas superior a 2h.
+
+
+2, 3, 4, 6, 8, 9, 10, 11, 16, 18

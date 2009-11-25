@@ -210,4 +210,26 @@ CREATE TABLE FILMES_INFO_TB
 	PROFISSIONAIS	PROFISSIONAIS_NT
 )
 NESTED TABLE PROFISSIONAIS STORE AS PROFISSIONAIS_STB;
+
+select t.categoria from
+(select y.filme.categoria as categoria, count(*) as ocorrencias
+from CLIENTES_INFO_TB c, TABLE(c.emprestimos) y
+where c.cliente.sexo='M'
+group by y.filme.categoria) t where t.ocorrencias = (
+
+ select max(a.ocorrencias) from (
+
+
+select y.filme.categoria as categoria, count(*) as ocorrencias
+from CLIENTES_INFO_TB c, TABLE(c.emprestimos) y
+where c.cliente.sexo='M'
+group by y.filme.categoria
+
+
+)a
+
+ )
+
+
+
 --
