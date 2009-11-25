@@ -694,6 +694,19 @@ insert into CLIENTES_INFO_TB values (
     OPINIOES_NT()
 );
 
+
+
+insert into CLIENTES_INFO_TB values (
+	(select ref(e) from clientes_tb e where e.codigo=3),
+	DEPENDENTES_NT(),
+	EMPRESTIMOS_NT(),
+	   
+	RESERVAS_NT(),
+    OPINIOES_NT()
+);
+
+
+
 	
 
 
