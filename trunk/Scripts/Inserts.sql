@@ -95,7 +95,7 @@ FORNECEDOR_TY
             (
                 'wb@gmail.com'
             ),
-		TELEFONES_TY('(83)3333-3333', '(83)8888-8888')
+		TELEFONES_TY('05508333333333', '05508388888888')
     )
 );
 
@@ -115,7 +115,7 @@ FORNECEDOR_TY
             (
                 'ff@gmail.com'
             ),
-		TELEFONES_TY('(83)3333-3333', '(83)8888-8888')
+		TELEFONES_TY('05508333333333', '05508388888888')
     )
 );
 
@@ -135,7 +135,7 @@ FORNECEDOR_TY
             (
                 'ff@gmail.com'
             ),
-		TELEFONES_TY('(83)3333-3333', '(83)8888-8888')
+		TELEFONES_TY('05508333333333', '05508388888888')
     )
 );
 
@@ -544,12 +544,12 @@ insert into clientes_tb values(
             ),
          EMAILS_TY
             (
-                'jpandeiro@gmail.com'
+                'jpandeiro@gmail.com', 'jp@gmail.com'
             ),
 		'M',
 		'Forrozeiro',
 		4.00,
-		TELEFONES_TY('(83)3333-3333', '(83)8888-8888')
+		TELEFONES_TY('05508333333333', '05508388888888')
 	 )
 );
 
@@ -569,12 +569,12 @@ insert into clientes_tb values(
             ),
          EMAILS_TY
             (
-                'lg@gmail.com'
+                'lg@gmail.com', 'lg2@gmail.com'
             ),
 		'M',
 		'Forrozeiro',
 		4.00,
-		TELEFONES_TY('(83)3333-3333', '(83)8888-8888')
+		TELEFONES_TY('05508333333333', '05508388888888')
 	 )
 );
 
@@ -594,12 +594,12 @@ insert into clientes_tb values(
             ),
          EMAILS_TY
             (
-                'm@gmail.com'
+                'm@gmail.com', 't@gmail.com'
             ),
 		'F',
 		'Forrozeiro',
 		2.00,
-		TELEFONES_TY('(83)3333-3333', '(83)8888-8888')
+		TELEFONES_TY('05508333333333', '05508388888888')
 	 )
 );
 
@@ -607,7 +607,25 @@ delete from CLIENTES_INFO_TB;
 
 insert into CLIENTES_INFO_TB values (
 	(select ref(e) from clientes_tb e where e.codigo=1),
-	DEPENDENTES_NT(),
+	DEPENDENTES_NT(
+	   dependente_ty(
+	     'Fernando Fagundes',
+		 ENDERECO_TY
+            (
+                'Rua do Forró3',
+                13,
+                'Capoeiras3',
+                'Cajazeiras',
+                'PB'
+            ),
+         EMAILS_TY
+            (
+                'fernandof@gmail.com'
+            ),
+		'M',
+		TELEFONES_TY('05508333333333', '05508388888888')
+	  )
+	),
 	EMPRESTIMOS_NT(
 	  emprestimo_ty(
 	   '10/01/2009',
@@ -648,7 +666,43 @@ insert into CLIENTES_INFO_TB values (
 
 insert into CLIENTES_INFO_TB values (
 	(select ref(e) from clientes_tb e where e.codigo=2),
-	DEPENDENTES_NT(),
+	DEPENDENTES_NT(
+	    dependente_ty(
+	     'Romeryto Lira',
+		 ENDERECO_TY
+            (
+                'Rua do Forró3',
+                13,
+                'Capoeiras3',
+                'Cajazeiras',
+                'PB'
+            ),
+         EMAILS_TY
+            (
+                'romeryto@gmail.com'
+            ),
+		'M',
+		TELEFONES_TY('05508333333333', '05508388888888')
+	  ),
+	  dependente_ty(
+	     'Maria do Bairro',
+		 ENDERECO_TY
+            (
+                'Rua do Forró3',
+                13,
+                'Capoeiras3',
+                'Cajazeiras',
+                'PB'
+            ),
+         EMAILS_TY
+            (
+                'mariab@gmail.com'
+            ),
+		'F',
+		TELEFONES_TY('05508333333333', '05508388888888')
+	  )
+	
+	),
 	EMPRESTIMOS_NT(
 		emprestimo_ty(
 		   '12/02/2009',
@@ -698,13 +752,48 @@ insert into CLIENTES_INFO_TB values (
 
 insert into CLIENTES_INFO_TB values (
 	(select ref(e) from clientes_tb e where e.codigo=3),
-	DEPENDENTES_NT(),
+	DEPENDENTES_NT(
+	  dependente_ty(
+	     'Geo Alvez',
+		 ENDERECO_TY
+            (
+                'Rua do Forró3',
+                13,
+                'Capoeiras3',
+                'Cajazeiras',
+                'PB'
+            ),
+         EMAILS_TY
+            (
+                'galv@gmail.com'
+            ),
+		'M',
+		TELEFONES_TY('05508333333333', '05508388888888')
+	  ),
+	  dependente_ty(
+	     'Adreia Alvez',
+		 ENDERECO_TY
+            (
+                'Rua do Forró3',
+                13,
+                'Capoeiras3',
+                'Cajazeiras',
+                'PB'
+            ),
+         EMAILS_TY
+            (
+                'andal@gmail.com'
+            ),
+		'F',
+		TELEFONES_TY('05508333333333', '05508388888888')
+	  )
+	  
+	),
 	EMPRESTIMOS_NT(),
 	   
 	RESERVAS_NT(),
     OPINIOES_NT()
 );
-
 
 
 	
