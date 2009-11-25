@@ -1,4 +1,15 @@
---02
+--02 --PENDENTE
+
+SELECT c.cliente.nome as NOME_CLIENTE,
+      e.DATA_EMPRESTIMO AS DATA_EMPRESTIMO,
+      e.DATA_ENTREGA AS DATA_DE_ENTREGA,
+      e.VALOR_MULTA AS VALOR_DA_MULTA,
+      e.MULTA_PAGA AS MULTA_PAGA,
+      e.filme.titulo AS TITULO_FILME
+      FROM CLIENTES_INFO_TB C, TABLE(C.EMPRESTIMOS) E
+      WHERE C.CLIENTE.CPF = '77777777777' and e.data_emprestimo > '01/01/09'
+      order by DATA_EMPRESTIMO
+
 --##
 
 --03	OK
@@ -103,7 +114,12 @@ END;
 --08
 --##
 
---09
+--09    PENDENTE
+
+SELECT c.cliente.nome as NOME_CLIENTE, SUM(e.VALOR_MULTA) AS TOTAL_DEVIDO
+       FROM CLIENTES_INFO_TB C, TABLE(C.EMPRESTIMOS) E
+       group by c.cliente.nome
+	   
 --##
 
 --10

@@ -648,13 +648,15 @@ insert into CLIENTES_INFO_TB values (
 	  emprestimo_ty(
 	   '10/01/2009',
 	   '12/01/2009',
+	   2.00,
 	   1.50,
-	   0,
+	   1,
 	   (select ref(e) from filmes_tb e where e.codigo=4)
 	  ) ,
 	   emprestimo_ty(
 		   '16/12/2008',
 		   '18/12/2008',
+		   3.00,
 		   1.50,
 		   0,
 		   (select ref(e) from filmes_tb e where e.codigo=6)
@@ -725,6 +727,7 @@ insert into CLIENTES_INFO_TB values (
 		emprestimo_ty(
 		   '12/02/2009',
 		   '14/02/2009',
+		   6.00,
 		   1.50,
 		   0,
 		   (select ref(e) from filmes_tb e where e.codigo=5)
@@ -733,8 +736,9 @@ insert into CLIENTES_INFO_TB values (
 		emprestimo_ty(
 		   '16/01/2009',
 		   '18/01/2009',
+		   7.00,
 		   1.50,
-		   0,
+		   1,
 		   (select ref(e) from filmes_tb e where e.codigo=6)
 		 )
 		 ,
@@ -742,6 +746,7 @@ insert into CLIENTES_INFO_TB values (
 		 emprestimo_ty(
 		   '05/04/2009',
 		   '18/04/2009',
+		   5.00,
 		   1.50,
 		   0,
 		   (select ref(e) from filmes_tb e where e.codigo=3)
