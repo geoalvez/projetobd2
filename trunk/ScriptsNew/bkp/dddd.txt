@@ -1,0 +1,6 @@
+select  t.catogoria, max(t.ocorrencias)  from
+
+(select y.filme.categoria as categoria, count(*) as ocorrencias
+from CLIENTES_INFO_TB c, TABLE(c.emprestimos) y
+where c.cliente.sexo='M'
+group by y.filme.categoria) t
