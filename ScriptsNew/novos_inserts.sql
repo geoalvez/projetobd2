@@ -615,9 +615,34 @@ insert into CLIENTES_INFO_TB values (
 	   0,
 	   0,
 	   (select ref(e) from filmes_tb e where e.codigo=4)
-	  )
+	  ) ,
+	   emprestimo_ty(
+		   '16/12/2008',
+		   '18/12/2008',
+		   0,
+		   0,
+		   (select ref(e) from filmes_tb e where e.codigo=6)
+		)
+	   
+	  
 	),
-	RESERVAS_NT(),
+	RESERVAS_NT(
+	     reserva_ty(
+		     '01/01/2007',
+			 '10/01/2007',
+			 (select ref(e) from filmes_tb e where e.codigo=1)
+		 ),
+		 
+		  reserva_ty(
+		     '20/01/2006',
+			 '30/01/2006',
+			 (select ref(e) from filmes_tb e where e.codigo=2)
+		 )
+		 
+		 
+	
+	
+	),
     OPINIOES_NT()
 );
 
@@ -640,10 +665,32 @@ insert into CLIENTES_INFO_TB values (
 		   0,
 		   (select ref(e) from filmes_tb e where e.codigo=6)
 		 )
+		 ,
+		 
+		 emprestimo_ty(
+		   '05/04/2009',
+		   '18/04/2009',
+		   0,
+		   0,
+		   (select ref(e) from filmes_tb e where e.codigo=3)
+		 )
 	 
 	 ),
 	   
-	RESERVAS_NT(),
+	RESERVAS_NT(
+	   reserva_ty(
+		     '02/02/2009',
+			 '10/02/2009',
+			 (select ref(e) from filmes_tb e where e.codigo=3)
+		 ),
+		  reserva_ty(
+		     '01/01/2008',
+			 '10/01/2008',
+			 (select ref(e) from filmes_tb e where e.codigo=4)
+		 )
+	  
+	
+	),
     OPINIOES_NT()
 );
 

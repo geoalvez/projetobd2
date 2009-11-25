@@ -118,34 +118,46 @@ select * from clientes_tb
 
 --17
 
-select c.nome, t.* , e.*
-from clientes_tb c, table(c.emails) e, table(c.telefones) t
+select c.cliente.nome, t.* , e.*
+from clientes_info_tb c, table(c.cliente.emails) e, table(c.cliente.telefones) t,  TABLE(c.emprestimos) w
+where w.filme.titulo='Troia'
 
 --Resultado
-
---NOME 					 COLUMN_VALUE		COLUMN_VALUE
---Jackson do Pandeiro	(83)3333-3333	  jpandeiro@gmail.com
---Jackson do Pandeiro	(83)8888-8888	  jpandeiro@gmail.com
---Luiz Gonzaga			(83)3333-3333	  lg@gmail.com
---Luiz Gonzaga			(83)8888-8888	  lg@gmail.com
---Marinez				(83)3333-3333	  m@gmail.com
---Marinez				(83)8888-8888	  m@gmail.com
+--CLIENTE.NOME	COLUMN_VALUE	COLUMN_VALUE
+--Luiz Gonzaga	(83)3333-3333	lg@gmail.com
+--Luiz Gonzaga	(83)8888-8888	lg@gmail.com
 
 --15) pendente affff
-SELECT deref(U).codigo
-FROM the (SELECT c.emprestimos FROM CLIENTES_TB_INFORM c where deref(c.cliente).sexo='M') U
+select t.categoria from
+(select y.filme.categoria as categoria, count(*) as ocorrencias
+from CLIENTES_INFO_TB c, TABLE(c.emprestimos) y
+where c.cliente.sexo='M'
+group by y.filme.categoria) t where t.ocorrencias = (
+
+ select max(a.ocorrencias) from (
 
 
-select deref(c.emprestimos)
-from CLIENTES_INFO_TB c
-where deref(c.cliente).sexo='M'
+select y.filme.categoria as categoria, count(*) as ocorrencias
+from CLIENTES_INFO_TB c, TABLE(c.emprestimos) y
+where c.cliente.sexo='M'
+group by y.filme.categoria
 
-select e.codigo, deref(e.filme).titulo from emprestimos_tb e;
 
+)a
 
-SELECT deref(E).MULTA_PAGA
-FROM CLIENTES_TB_INFORM C, TABLE(C.EMPRESTIMOS) E
-WHERE deref(C.CLIENTE).CODIGO=2
+ )
 
---17
+--CATEGORIA
+--Comedia
+
+--13
+select f.filme.titulo , count(*) as num_alugueis 
+from emprestimos_stb f
+group by f.filme.titulo
+order by num_alugueis DESC  
+
+--FILME.TITULO	NUM_ALUGUEIS
+--O mascara 2	2
+--O mascara	1
+--Jogos mortais	1
 
