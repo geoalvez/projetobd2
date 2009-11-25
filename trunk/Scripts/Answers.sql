@@ -141,11 +141,10 @@ ORDER BY NOME_CLIENTE
 --##
 
 --18
-
-select c.cliente.nome as nomeCliente, y.nome as nomeDependente
-from CLIENTES_INFO_TB c, TABLE(c.dependentes) y
-where y.sexo='M'
-order by nomeCliente
+SELECT	C.CLIENTE.NOME AS NOME_CLIENTE, D.NOME AS NOME_DEPENDENTE
+FROM CLIENTES_INFO_TB C, TABLE(C.DEPENDENTES) D
+WHERE D.SEXO = 'M'
+ORDER BY NOME_CLIENTE
 
 --Resultado
 --NOMECLIENTE	NOMEDEPENDENTE
