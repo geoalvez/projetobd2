@@ -238,7 +238,7 @@ insert into filmes_info_tb values(
                 'rua da coxinha',
                 123,
                 'centro',
-                'Aliança',
+                'Alianca',
                 'PE'
             ),
             EMAILS_TY
@@ -536,7 +536,7 @@ insert into clientes_tb values(
 		 99999999999,
 		 ENDERECO_TY
             (
-                'Rua do Forró',
+                'Rua do Forro',
                 13,
                 'Capoeiras',
                 'Cajazeiras',
@@ -561,7 +561,7 @@ insert into clientes_tb values(
 		 88888888888,
 		 ENDERECO_TY
             (
-                'Rua do Forró 2',
+                'Rua do Forro 2',
                 13,
                 'Capoeiras 2',
                 'Cajazeiras',
@@ -586,7 +586,7 @@ insert into clientes_tb values(
 		 77777777777,
 		 ENDERECO_TY
             (
-                'Rua do Forró3',
+                'Rua do Forro 3',
                 13,
                 'Capoeiras3',
                 'Cajazeiras',
@@ -612,7 +612,7 @@ insert into CLIENTES_INFO_TB values (
 	     'Fernando Fagundes',
 		 ENDERECO_TY
             (
-                'Rua do Forró3',
+                'Rua do Forro 3',
                 13,
                 'Capoeiras3',
                 'Cajazeiras',
@@ -629,7 +629,7 @@ insert into CLIENTES_INFO_TB values (
 	     'Jeysibel da silva',
 		 ENDERECO_TY
             (
-                'Rua do Forró3',
+                'Rua do Forro3',
                 13,
                 'Capoeiras3',
                 'Cajazeiras',
@@ -691,7 +691,7 @@ insert into CLIENTES_INFO_TB values (
 	     'Romeryto Lira',
 		 ENDERECO_TY
             (
-                'Rua do Forró3',
+                'Rua do Forro 3',
                 13,
                 'Capoeiras3',
                 'Cajazeiras',
@@ -708,7 +708,7 @@ insert into CLIENTES_INFO_TB values (
 	     'Maria do Bairro',
 		 ENDERECO_TY
             (
-                'Rua do Forró3',
+                'Rua do Forro3',
                 13,
                 'Capoeiras3',
                 'Cajazeiras',
@@ -780,7 +780,7 @@ insert into CLIENTES_INFO_TB values (
 	     'Geo Alvez',
 		 ENDERECO_TY
             (
-                'Rua do Forró3',
+                'Rua do Forro3',
                 13,
                 'Capoeiras3',
                 'Cajazeiras',
@@ -797,7 +797,7 @@ insert into CLIENTES_INFO_TB values (
 	     'Adreia Alvez',
 		 ENDERECO_TY
             (
-                'Rua do Forró3',
+                'Rua do Forro3',
                 13,
                 'Capoeiras3',
                 'Cajazeiras',
