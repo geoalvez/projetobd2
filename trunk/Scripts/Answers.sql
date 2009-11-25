@@ -63,18 +63,19 @@ END;
 
 --CRIACAO DO INSTANCE METHOD
 
-ALTER TYPE FILME_TY
+ALTER TYPE CLIENTE_TY
     DROP MEMBER PROCEDURE RESERVA FILME;
 
-ALTER TYPE FILME_TY
+ALTER TYPE CLIENTE_TY
     ADD MEMBER PROCEDURE  RESERVA FILME;
 
-CREATE OR REPLACE TYPE BODY FILME_TY IS
-    PROCEDURE RESERVA FILME() AS LANGUAGE JAVA
-    NAME 'ExecutarInsert.reservarFilme()';
+CREATE OR REPLACE TYPE BODY CLIENTE_TY IS
+    PROCEDURE RESERVA FILME(SELF.CODIGO NUMBER) AS LANGUAGE JAVA
+    NAME 'ExecutarInsert.reservarFilme(double)';
 END;
 
--- CONSULTA A SER USADA NA CLASSE JAVA
+-- CONSULTA A SER USADA NA CLASSE JAVA (FAZ A RESERVA DE UM FILME)
+
 INSERT INTO TABLE(
    SELECT C.RESERVAS
    FROM CLIENTES_INFO_TB C
@@ -96,22 +97,20 @@ import oracle.sqlj.runtime.Oracle;
 
 public class ExecutarInsert
 {
-  public static void reservarFilme () throws SQLException
+  public static void reservarFilme (double codigo) throws SQLException
   {
-  
+     int codigoAux = (int) codigo;
     try{
 		Oracle.connect("jdbc:oracle:orcl:@localhost:5521:sol2", "system", "root");
-		#sql { INSERT INTO TABLE(
-					   SELECT C.RESERVAS
-					   FROM CLIENTES_INFO_TB C
-					   where C.CLIENTE.CODIGO = 1
+		#sql { 
+		"INSERT INTO TABLE(SELECT C.RESERVAS FROM CLIENTES_INFO_TB C  where C.CLIENTE.CODIGO =" +codigoAux +"
 			   ) values(
 						reserva_ty(
 						 (SELECT SYSDATE FROM DUAL) ,
 						 (SELECT SYSDATE + 3 FROM DUAL) ,
 						 (SELECT REF(F) FROM FILMES_TB F WHERE F.CODIGO=5)
 						)
-			   ); 
+			   ); "
 
 		}; //fim do sql 
 		
