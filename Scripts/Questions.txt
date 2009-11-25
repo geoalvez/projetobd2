@@ -7,7 +7,7 @@
 =>7.Crie um método  de instância usando SQL que mostra a duração do filme em horas.
 8.Crie um método de instância  SQL no tipo Cliente que realiza o  aluguel de um filme
 9.Crie um método estático SQL para o tipo Cliente, que exibe o total devido com multas de todos os clientes.
-10.Crie um método de instância Java no tipo cliente que permite reservar um filme.
+=>10.Crie um método de instância Java no tipo cliente que permite reservar um filme.
 11.Crie um método de instância no tipo fornecedor que mostra os categorias que ele fornece em Inglês (ou seja ele traduz as categorias que estão armazenadas em português para inglês).
 => 12.Listar os filmes que receberam mais de 2 Oscars juntamente com seus diretores;
 => 13.Listar os filmes e a quantidade de vezes que foram alugados em ordem decrescente;
@@ -20,4 +20,4 @@
 =>20.Liste os títulos dos filmes que têm duração em horas superior a 2h.
 
 
-2, 3, 4, 5, 6, 8, 9, 10
+2, 3, 4, 6, 8, 9, 11
