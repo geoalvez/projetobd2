@@ -56,11 +56,6 @@ END;
 --##
 
 --10
---##
-
-
---11
-
 --CRIACAO DO INSTANCE METHOD
 
 ALTER TYPE CLIENTE_TY
@@ -119,6 +114,13 @@ public class ExecutarInsert
 	}
   }
 }
+
+--##
+
+
+--11
+
+--##
 
 
 --CONSIDERAR OS DADOS DOS INSERTS.SQL A PARTIR DAQUI
