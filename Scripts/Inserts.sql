@@ -558,7 +558,7 @@ insert into clientes_tb values(
 	 (
 	     2,
 		 'Luiz Gonzaga',
-		 99999999999,
+		 88888888888,
 		 ENDERECO_TY
             (
                 'Rua do Forró 2',
@@ -583,7 +583,7 @@ insert into clientes_tb values(
 	 (
 	     3,
 		 'Marinez',
-		 99999999999,
+		 77777777777,
 		 ENDERECO_TY
             (
                 'Rua do Forró3',
