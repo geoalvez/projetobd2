@@ -58,7 +58,72 @@ END;
 --10
 --##
 
+
 --11
+
+--CRIACAO DO INSTANCE METHOD
+
+ALTER TYPE FILME_TY
+    DROP MEMBER PROCEDURE RESERVA FILME;
+
+ALTER TYPE FILME_TY
+    ADD MEMBER PROCEDURE  RESERVA FILME;
+
+CREATE OR REPLACE TYPE BODY FILME_TY IS
+    PROCEDURE RESERVA FILME() AS LANGUAGE JAVA
+    NAME 'ExecutarInsert.reservarFilme()';
+END;
+
+-- CONSULTA A SER USADA NA CLASSE JAVA
+INSERT INTO TABLE(
+   SELECT C.RESERVAS
+   FROM CLIENTES_INFO_TB C
+   where C.CLIENTE.CODIGO = 1
+) values(
+    reserva_ty(
+     (SELECT SYSDATE FROM DUAL) ,
+     (SELECT SYSDATE + 3 FROM DUAL) ,
+     (SELECT REF(F) FROM FILMES_TB F WHERE F.CODIGO=5)
+    )
+);
+
+--Classe java
+
+import java.sql.*;
+import sqlj.runtime.ref.DefaultContext;
+import oracle.sqlj.runtime.Oracle;
+
+
+public class ExecutarInsert
+{
+  public static void reservarFilme () throws SQLException
+  {
+  
+    try{
+		Oracle.connect("jdbc:oracle:orcl:@localhost:5521:sol2", "system", "root");
+		#sql { INSERT INTO TABLE(
+					   SELECT C.RESERVAS
+					   FROM CLIENTES_INFO_TB C
+					   where C.CLIENTE.CODIGO = 1
+			   ) values(
+						reserva_ty(
+						 (SELECT SYSDATE FROM DUAL) ,
+						 (SELECT SYSDATE + 3 FROM DUAL) ,
+						 (SELECT REF(F) FROM FILMES_TB F WHERE F.CODIGO=5)
+						)
+			   ); 
+
+		}; //fim do sql 
+		
+	}catch(SQLException e){
+		System.out.println("Erro na consulta");
+	}
+  }
+}
+
+
+--CONSIDERAR OS DADOS DOS INSERTS.SQL A PARTIR DAQUI
+
 --##
 
 --12	OK
@@ -85,11 +150,13 @@ GROUP BY E.FILME.TITULO
 ORDER BY NUM_ALUGUEIS DESC
 
 
---FILME.TITULO	NUM_ALUGUEIS
+--Resultado
+--FILME	NUM_ALUGUEIS
 --O mascara 2	2
 --O mascara	1
+--Troia	1
 --Jogos mortais	1
---##
+
 
 --14	OK
 SELECT VALUE(P).NOME AS NOME_ATOR
@@ -157,9 +224,11 @@ WHERE EMP.FILME.TITULO = 'Troia'
 ORDER BY NOME_CLIENTE
 
 --Resultado
---CLIENTE.NOME	COLUMN_VALUE	COLUMN_VALUE
---Luiz Gonzaga	(83)3333-3333	lg@gmail.com
---Luiz Gonzaga	(83)8888-8888	lg@gmail.com
+--NOME_CLIENTE	TELEFONES	EMAILS
+--Luiz Gonzaga	05508333333333	lg@gmail.com
+--Luiz Gonzaga	05508388888888	lg2@gmail.com
+--Luiz Gonzaga	05508333333333	lg2@gmail.com
+--Luiz Gonzaga	05508388888888	lg@gmail.com
 --##
 
 --18	OK
